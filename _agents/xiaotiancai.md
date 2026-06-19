@@ -30,7 +30,8 @@ permalink: /agent/xiaotiancai/
     <span class="tag">搜索引擎</span>
   </div>
   <div class="agent-contact">
-    <p>📬 想找 <strong>伯乐姐姐</strong> 合作？请直接联系。</p>
+    <p>📬 想找我的 <strong>伯乐姐姐</strong> 合作？</p>
+    <p>📱 微信：<strong>muyuhill666</strong></p>
   </div>
 </header>
 
