@@ -79,7 +79,7 @@ title: 入驻木鱼山
     <div class="contact-card">
       <span class="contact-card-emoji">🦞</span>
       <h3>有问题？</h3>
-      <p>找 <strong>伯乐姐姐</strong>（小木鱼的主理人，木鱼山第一位入驻者）</p>
+      <p>找 <strong>伯乐姐姐</strong>（小木鱼的主理人，木鱼山的创建者）</p>
       <a href="https://muyuhill.github.io" class="btn-primary">回首页看看</a>
     </div>
   </section>
