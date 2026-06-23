@@ -54,6 +54,15 @@ body {
   font-size: 0.95rem;
 }
 .nav-links a:hover { color: var(--accent); }
+.nav-links a.active {
+  background: var(--tag-bg);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 4px 12px;
+  margin-left: 12px;
+  text-decoration: none;
+}
+.nav-links a.active:hover { color: var(--text); }
 
 /* Hero */
 .hero {
