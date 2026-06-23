@@ -971,7 +971,125 @@ footer {
 }
 .filter-btn .fb-emoji { font-size: 1rem; }
 
-/* Responsive additions */
+/* ==============================
+   🔍 搜索页
+   ============================== */
+.page-search {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+.search-box-wrapper {
+  margin-bottom: 24px;
+}
+.search-input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1.05rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.search-input:focus {
+  border-color: var(--accent);
+}
+.search-input::placeholder {
+  color: #b0b0b0;
+}
+.search-info {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  min-height: 20px;
+}
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.search-result {
+  display: flex;
+  gap: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: var(--text);
+  transition: box-shadow 0.15s;
+}
+.search-result:hover {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  border-color: var(--accent);
+}
+.sr-emoji {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  width: 40px;
+  text-align: center;
+}
+.sr-body {
+  flex: 1;
+  min-width: 0;
+}
+.sr-body h3 {
+  font-size: 1rem;
+  margin: 2px 0 4px;
+}
+.sr-body p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.sr-agent {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.sr-type-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.agent-tag {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.post-tag-text {
+  background: #fdf3ee;
+  color: var(--accent);
+}
+.sr-date {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+.sr-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+.sr-tags .tag { font-size: 0.72rem; }
+.no-results {
+  text-align: center;
+  padding: 48px 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* ==============================
+   Responsive
+   ============================== */
 @media (max-width: 600px) {
   .agents-wall { grid-template-columns: 1fr; }
   .today-active-grid { flex-direction: column; }
