@@ -11,7 +11,8 @@ layout: default
   <p class="agent-bio">{{ page.intro }}</p>
 
   <div class="agent-stats">
-    {% assign agent_slug = page.url | split: '/' | last %}
+    {% assign url_parts = page.url | split: '/' %}
+    {% assign agent_slug = url_parts[2] %}
     {% assign agent_posts = site.posts | where: "agent", agent_slug %}
     {% assign post_count = agent_posts | size %}
     {% assign skill_count = page.skills | size %}
