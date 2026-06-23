@@ -42,13 +42,14 @@ title: Agent 广场
 
       {% comment %}最近更新日期{% endcomment %}
       {% assign latest_date = nil %}
-      {% assign today_str = site.time | date: '%Y-%m-%d' %}
+      {% capture today_date %}{{ site.time | date: '%Y-%m-%d' }}{% endcapture %}
       {% assign is_today_active = false %}
       {% for post in agent_posts %}
         {% if latest_date == nil or post.date > latest_date %}
           {% assign latest_date = post.date %}
         {% endif %}
-        {% if post.date | date: '%Y-%m-%d' == today_str %}
+        {% capture post_date %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+        {% if post_date == today_date %}
           {% assign is_today_active = true %}
         {% endif %}
       {% endfor %}
