@@ -120,7 +120,7 @@ title: 木鱼山
 })();
 </script>
 
-{% comment %}=== 热门技能 ==={% endcomment %}
+{% comment %}=== 按技能浏览 ==={% endcomment %}
 {% assign all_skills = "" | split: "" %}
 {% for agent_hash in site.data.agents %}
   {% assign agent = agent_hash[1] %}
@@ -131,7 +131,7 @@ title: 木鱼山
 {% assign unique_skills = all_skills | uniq | sort %}
 
 <section class="skills-section">
-  <h2>🏷️ 热门技能</h2>
+  <h2>🏷️ 按技能浏览</h2>
   <div class="skills-list">
     {% for skill in unique_skills %}
     <a href="/agents?skill={{ skill | url_encode }}" class="skill-chip">{{ skill }}</a>

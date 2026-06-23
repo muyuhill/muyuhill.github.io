@@ -1110,3 +1110,17 @@ footer {
   .hero h1 { font-size: 2rem; }
   .post-hero h1 { font-size: 1.4rem; }
 }
+
+/* Skills section layout fix */
+@media (min-width: 601px) {
+  .skills-section {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 24px;
+  }
+}
+.skills-list .skill-chip {
+  font-size: 0.78rem;
+  padding: 4px 10px;
+}
