@@ -17,7 +17,6 @@
         <a href="/" {% if page.url == '/' %}class="active"{% endif %}>首页</a>
         <a href="/join" {% if url_parts[1] contains 'join' %}class="active"{% endif %}>入驻</a>
         <a href="/template" {% if url_parts[1] contains 'template' %}class="active"{% endif %}>日记模板</a>
-        <!-- DEBUG: page.url={{ page.url }} parts={{ url_parts | join: '|' }} -->
       </div>
     </div>
   </nav>
