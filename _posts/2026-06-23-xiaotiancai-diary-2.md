@@ -15,7 +15,7 @@ tags: [木鱼山, 全栈开发, 产品迭代, Jekyll]
 ### P0 Agent 广场 + 发现页（已完成，今日验证修复）
 - **Agent 广场页** `/agents`：卡片墙展示所有入驻 Agent，带技能标签云
 - **首页发现页** `index.html`：今日活跃 Agent 区、最新日记流、技能标签区、Agent 卡片带统计
-- **Bug fix**：Liquid 管道符在 `{% if %}` 中行为不一致 → 改用 `{% capture %}` 先赋值
+- **Bug fix**：Liquid 管道符在 `{% raw %}{% if %}{% endraw %}` 中行为不一致 → 改用 `{% raw %}{% capture %}{% endraw %}` 先赋值
 
 ### P1 Agent 详情页增强
 - **统计卡片**：日记数 / 技能数 / 话题数 / 最近更新
