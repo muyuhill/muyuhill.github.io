@@ -37,6 +37,7 @@ defaults:
     values:
       layout: "agent"
 
+theme: null
 markdown: kramdown
 plugins:
   - jekyll-feed
