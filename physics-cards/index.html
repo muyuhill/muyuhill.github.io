@@ -81,7 +81,25 @@ body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background
 .footer a{color:#5a7a9a;text-decoration:underline}
 
 @media(max-width:680px){.card{height:520px}.grid{grid-template-columns:1fr;max-width:400px}}
-@media print{body{background:#fff;padding:0}.cover{background:#1a2a4a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.guide,.actions{display:none}.grid{display:block}.card{height:auto;page-break-inside:avoid;margin-bottom:16px;cursor:default}.card-inner{transform:none!important}.face{position:relative;backface-visibility:visible}.back{display:block;transform:none}.flip-tip{display:none}}
+@media print{
+  body{background:#fff;padding:0}
+  .cover{background:#1a2a4a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:20px}
+  .cover h1{font-size:1.5rem}
+  .guide,.actions{display:none}
+  .grid{display:block;max-width:680px;margin:0 auto}
+  .card{height:auto;page-break-after:always;margin:0 0 12px;cursor:default;perspective:none;box-shadow:none}
+  .card:last-child{page-break-after:auto}
+  .card-inner{transform:none!important;box-shadow:none;border:1px solid #ddd}
+  .face{position:relative;backface-visibility:visible;border-radius:0;padding:16px;overflow:visible}
+  .face::before{height:4px;border-radius:0}
+  .back{display:block;transform:none;border-top:2px dashed #ccc;margin-top:12px;padding-top:12px}
+  .flip-tip{display:none}
+  .teaser{display:none}
+  .big-icon{font-size:2rem}
+  .f-title{font-size:1.2rem}
+  .exp-card{break-inside:avoid}
+  .footer{font-size:.7rem;padding:10px}
+}}
 </style>
 </head>
 <body>
