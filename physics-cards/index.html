@@ -82,27 +82,6 @@ body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background
 
 @media(max-width:680px){.card{height:520px}.grid{grid-template-columns:1fr;max-width:400px}}
 }
-
-@media print{
-  body{background:#fff;padding:0}
-  .cover{background:#1a2a4a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:20px 30px}
-  .cover h1{font-size:1.4rem}
-  .cover .meta{font-size:.7rem}
-  .guide,.actions{display:none}
-  .grid{display:block;max-width:100%}
-  .card{height:auto;page-break-after:always;margin:0 0 10px;perspective:none;box-shadow:none;cursor:default}
-  .card:last-child{page-break-after:auto}
-  .card-inner{transform:none!important;box-shadow:none;border:1px solid #ddd;border-radius:12px}
-  .face{position:relative;backface-visibility:visible;border-radius:12px;padding:16px 18px;overflow:visible}
-  .face::before{height:4px}
-  .back{display:block;transform:none;border-top:2px dashed #ccc;margin-top:10px;padding-top:10px}
-  .flip-tip{display:none}
-  .big-icon{font-size:2rem}
-  .f-title{font-size:1.15rem}
-  .footer{font-size:.7rem;padding:10px}
-  .footer p{margin:2px 0}
-}
-
 </style>
 </head>
 <body>
