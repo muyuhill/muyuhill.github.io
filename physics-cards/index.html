@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=yes">
+<title>八上物理预习知识卡 · 沪科版五四制网页版</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background:linear-gradient(150deg,#e8ecf4 0%,#dce3ed 100%);min-height:100vh;padding:0 0 60px;display:flex;flex-direction:column;align-items:center}
+
+/* ===== 封面区 ===== */
+.cover{width:100%;background:linear-gradient(135deg,#1a2a4a 0%,#2c3e6b 40%,#1a6b5a 100%);color:#fff;padding:40px 20px 36px;text-align:center;margin-bottom:8px}
+.cover .brand{font-size:.75rem;letter-spacing:2px;opacity:.6;text-transform:uppercase;margin-bottom:8px}
+.cover h1{font-size:2rem;font-weight:800;margin-bottom:6px;letter-spacing:-.3px}
+.cover .sub{font-size:1rem;opacity:.85;margin-bottom:16px}
+.cover .meta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:.78rem;opacity:.75}
+.cover .meta span{background:rgba(255,255,255,.1);padding:4px 12px;border-radius:16px}
+
+/* ===== 使用指南条 ===== */
+.guide{max-width:800px;width:100%;margin:0 auto 24px;padding:0 16px}
+.guide-inner{background:#fff;border-radius:12px;padding:16px 20px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;font-size:.82rem;color:#3a4a5a;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.guide-step{display:flex;align-items:center;gap:6px}
+.guide-step .gs-num{width:22px;height:22px;border-radius:50%;background:#1565c0;color:#fff;font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.guide-divider{width:1px;height:24px;background:#e0e0e0}
+
+/* ===== 按钮 ===== */
+.actions{max-width:800px;width:100%;margin:0 auto 24px;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{padding:8px 18px;border-radius:8px;font-size:.82rem;font-weight:600;border:none;cursor:pointer;transition:all .15s}
+.btn-print{background:#1565c0;color:#fff}.btn-print:hover{background:#0d47a1}
+.btn-reset{background:#fff;color:#555;border:1px solid #ddd}.btn-reset:hover{background:#f5f5f5}
+.btn-progress{background:#f5f5f5;color:#666;font-size:.75rem;padding:8px 14px;border-radius:8px}
+
+/* ===== 卡片网格 ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;max-width:1100px;width:100%;padding:0 16px}
+.card{perspective:1200px;height:560px;user-select:none;cursor:pointer}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.23,1,.32,1);transform-style:preserve-3d;border-radius:20px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;padding:20px 18px 16px;display:flex;flex-direction:column;overflow:hidden;background:#fff}
+.back{transform:rotateY(180deg);overflow-y:auto}
+.face::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;border-radius:20px 20px 0 0}
+.card[data-c="teal"] .face::before{background:linear-gradient(90deg,#1ABC9C,#4ED4B8)}
+.card[data-c="blue"] .face::before{background:linear-gradient(90deg,#4A90D9,#6BA8E8)}
+.card[data-c="orange"] .face::before{background:linear-gradient(90deg,#E67E22,#F0A84A)}
+.card[data-c="red"] .face::before{background:linear-gradient(90deg,#E74C3C,#F0796A)}
+.card[data-c="green"] .face::before{background:linear-gradient(90deg,#27AE60,#4CD489)}
+.card[data-c="purple"] .face::before{background:linear-gradient(90deg,#8E44AD,#B86AC8)}
+.card[data-c="gold"] .face::before{background:linear-gradient(90deg,#F39C12,#F7C948)}
+
+.week-badge{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.3px;color:rgba(0,0,0,.5);background:rgba(0,0,0,.06);padding:3px 13px;border-radius:20px;align-self:flex-start;margin-bottom:8px}
+.big-icon{font-size:2.6rem;line-height:1.1;margin-bottom:4px}
+.f-title{font-size:1.35rem;font-weight:800;color:#1a2a4a;margin-bottom:2px}
+.f-sub{font-size:.8rem;color:#7a8a9a;margin-bottom:10px}
+.f-points{flex:1;list-style:none}
+.f-points li{font-size:.85rem;color:#3a4a5a;padding:4px 0 4px 22px;position:relative;line-height:1.5}
+.f-points li::before{content:'';position:absolute;left:4px;top:11px;width:6px;height:6px;border-radius:50%;background:#b0bec5}
+.teaser{font-size:.82rem;color:#5a7a9a;background:#f5f6f8;padding:8px 12px;border-radius:8px;margin-top:6px;font-style:italic}
+.flip-tip{text-align:right;font-size:.7rem;color:#bbb;margin-top:6px}
+
+.b-label{font-size:.7rem;font-weight:700;color:rgba(0,0,0,.4);letter-spacing:1px;margin-bottom:6px}
+.b-title{font-size:1.15rem;font-weight:800;color:#1a2a4a;margin-bottom:10px}
+.exp-card{background:#f8f9fb;border-radius:8px;padding:10px 12px;margin-bottom:8px;font-size:.8rem;line-height:1.5}
+.e-tag{display:inline-block;font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:3px;margin-right:6px}
+.card[data-c="blue"] .e-tag{background:#e3f0ff;color:#4A90D9}
+.card[data-c="green"] .e-tag{background:#e6f7ee;color:#27AE60}
+.card[data-c="orange"] .e-tag{background:#fef3e8;color:#E67E22}
+.card[data-c="purple"] .e-tag{background:#f5ebf9;color:#8E44AD}
+.card[data-c="red"] .e-tag{background:#fdebeb;color:#E74C3C}
+.card[data-c="teal"] .e-tag{background:#e8f8f4;color:#1ABC9C}
+.card[data-c="gold"] .e-tag{background:#fef9ed;color:#F39C12}
+.exp-card .e-title{font-weight:700;color:#2a3a4a;margin-bottom:2px}
+.exp-card .e-mat{color:#888;font-size:.75rem;margin-bottom:2px}
+.exp-card .e-principle{color:#3a5a3a;font-size:.78rem;background:#f0f7f0;padding:6px 8px;border-radius:4px;margin-top:4px;line-height:1.4}
+.exp-card .e-q{color:#1565c0;font-size:.76rem;font-style:italic;margin-top:3px}
+.res-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.res-row a,.res-row span{font-size:.7rem;padding:3px 8px;border-radius:4px;text-decoration:none;display:inline-block}
+.res-row a{background:#f3e5f5;color:#7b1fa2}
+.res-row .r-tag{background:#e3f2fd;color:#1565c0}
+.takeaway{font-size:.8rem;font-weight:700;color:#1a2a4a;margin-top:auto;padding:8px 10px;background:#fff8e1;border-radius:6px;text-align:left}
+
+.footer{text-align:center;color:#8a9aaa;font-size:.78rem;padding:28px 16px 20px;max-width:800px;width:100%}
+.footer a{color:#5a7a9a;text-decoration:underline}
+
+@media(max-width:680px){.card{height:520px}.grid{grid-template-columns:1fr;max-width:400px}}
+@media print{body{background:#fff;padding:0}.cover{background:#1a2a4a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.guide,.actions{display:none}.grid{display:block}.card{height:auto;page-break-inside:avoid;margin-bottom:16px;cursor:default}.card-inner{transform:none!important}.face{position:relative;backface-visibility:visible}.back{display:block;transform:none}.flip-tip{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ===== 封面区 ===== -->
+<div class="cover">
+<div class="brand">山上有嘉木的AI研究室 · 出品</div>
+<h1>🔬 八上物理 · 预习知识卡</h1>
+<p class="sub">沪科版五四制8张翻转卡片 + 实验手册</p>
+<div class="meta">
+<span>📖 紧贴沪科版教材</span><span>🧪 16个家庭实验</span><span>🎮 PhET互动模拟</span><span>📺 视频拓展资源</span>
+</div>
+</div>
+
+<!-- ===== 使用指南 ===== -->
+<div class="guide">
+<div class="guide-inner">
+<div class="guide-step"><span class="gs-num">1</span> 每周一张卡片</div>
+<div class="guide-divider"></div>
+<div class="guide-step"><span class="gs-num">2</span> 先看正面想概念</div>
+<div class="guide-divider"></div>
+<div class="guide-step"><span class="gs-num">3</span> 点卡片翻面做实验</div>
+<div class="guide-divider"></div>
+<div class="guide-step"><span class="gs-num">4</span> 记下底部那句💡</div>
+</div>
+</div>
+
+<!-- ===== 操作按钮 ===== -->
+<div class="actions">
+<button class="btn btn-print" onclick="window.print()" title="打印或导出为PDF">🖨️ 打印 / 导出PDF</button>
+<button class="btn btn-reset" onclick="document.querySelectorAll('.card.flipped').forEach(c=>c.classList.remove('flipped'));updateProgress()">🔄 全部翻回正面</button>
+<span class="btn-progress" id="progress">已翻阅 0 / 8 张</span>
+</div>
+
+<!-- ===== 卡片网格 ===== -->
+<div class="grid">
+
+<!-- 卡片0-7 内容与之前完全相同，此处省略 -->
+<div class="card" data-c="teal" onclick="this.classList.toggle('flipped');updateProgress()">
+<div class="card-inner">
+<div class="face front">
+<span class="week-badge">🔍 第 0 周</span>
+<div class="big-icon">🌍</div><div class="f-title">走进物理</div><div class="f-sub">序章 · 什么是物理学？</div>
+<ul class="f-points"><li>物理学研究<strong>声、光、热、力、电</strong></li><li>科学方法：<strong>观察→提问→假设→实验→结论</strong></li><li>伽利略：第一个用实验检验理论的人</li><li>爱因斯坦："想象力比知识更重要"</li></ul>
+<div style="font-size:.75rem;color:#666;background:#f0f4ff;padding:4px 8px;border-radius:4px;margin:4px 0;line-height:1.4;">🔍 <strong>趣味事实：</strong>物理学家费曼说："如果你以为你懂量子力学，那你就不懂量子力学。"——物理的乐趣就在于永远有新的"为什么"可以追问。</div>
+<div class="teaser">💭 你每天从起床到睡觉，会碰到多少种物理现象？</div><div class="flip-tip">👆 点击翻面</div></div>
+<div class="face back"><div class="b-label">🧪 热身</div><div class="b-title">物理就在你身边</div>
+<div class="exp-card"><span class="e-tag">观察</span><span class="e-title">一天中的物理</span><div class="e-mat">器材：你的眼睛 + 一个本子</div><div class="e-principle">从早上睁眼开始记录——镜子为什么能照出人？牙膏为什么能挤出来？热水倒入玻璃杯为什么杯子"响"？</div><div class="e-q">💡 写下10个，你会发现物理是你每天生活的说明书。</div></div>
+<div style="flex:1;margin:6px 0;display:flex;flex-direction:column;justify-content:space-evenly;">
+<div style="border-top:1px dashed #ccc;height:0;"></div>
+<div style="border-top:1px dashed #ccc;height:0;"></div>
+<div style="border-top:1px dashed #ccc;height:0;"></div>
+<div style="border-top:1px dashed #ccc;height:0;"></div>
+<div style="border-top:1px dashed #ccc;height:0;"></div>
+<div style="border-top:1px dashed #ccc;height:0;"></div>
+<div style="border-top:1px dashed #ccc;height:0;"></div>
+</div>
+<div style="font-size:.68rem;font-weight:700;color:#888;margin:4px 0 2px 0;">🎬 趣味视频</div>
+<div class="res-row"><span class="r-tag">📺 YouTube搜"Feynman谈物理之美"</span><span class="r-tag">📺 B站搜"有趣的物理现象"</span></div>
+<div class="takeaway" style="margin-top:8px;">💡 物理不是公式，是解释"为什么"的语言。</div>
+</div></div></div>
+
+<div class="card" data-c="blue" onclick="this.classList.toggle('flipped');updateProgress()">
+<div class="card-inner">
+<div class="face front"><span class="week-badge">🔔 第 1 周</span><div class="big-icon">🔊</div><div class="f-title">声现象</div><div class="f-sub">第1章 · 声音的产生与传播</div>
+<ul class="f-points"><li>声音由物体<strong>振动</strong>产生</li><li>传播靠<strong>介质</strong>：固体>液体>气体；真空不能传</li><li>三要素：<strong>音调</strong>（频率）、<strong>响度</strong>（振幅）、<strong>音色</strong></li><li>回声：障碍物≥<strong>17米</strong>才能区分</li></ul>
+<div style="font-size:.75rem;color:#666;background:#f0f4ff;padding:4px 8px;border-radius:4px;margin:4px 0;line-height:1.4;">🔍 <strong>趣味事实：</strong>声音在钢铁中的传播速度约5200m/s，是空气中的15倍！所以铁道工人把耳朵贴在铁轨上能提前听到远处火车的声音。</div>
+<div class="teaser">💭 宇航员在月球上面对面说话，对方听得见吗？</div><div class="flip-tip">👆 点击翻面做实验</div></div>
+<div class="face back"><div class="b-label">🧪 动手实验</div><div class="b-title">看见声音 + 传声介质</div>
+<div class="exp-card"><span class="e-tag">实验1</span><span class="e-title">看见声音——米粒跳舞</span><div class="e-mat">器材：碗、保鲜膜、几粒米</div><div class="e-principle">保鲜膜蒙碗口，撒米。大声喊或敲碗边，米粒跳动——把"听不见"的振动变成"看得见"的跳动。</div><div class="e-q">💡 声音越大，米跳得越高还是越低？</div></div>
+<div class="exp-card"><span class="e-tag">实验2</span><span class="e-title">土电话——感受"介质"</span><div class="e-mat">器材：两个纸杯、一根棉线（约3米）</div><div class="e-principle">纸杯底部扎孔，棉线穿过打结。拉直线小声说话。线松了还能听到吗？换成铁丝效果更强——<strong>固体传声比空气快且清晰。</strong></div><div class="e-q">💡 把棉线换成钓鱼线、毛线——哪种传声最清楚？</div></div>
+<div style="font-size:.68rem;font-weight:700;color:#888;margin:8px 0 4px 0;">🎬 趣味视频</div>
+<div class="res-row"><a href="https://phet.colorado.edu/zh_CN/simulations/waves-intro">🎮 PhET波动入门</a><span class="r-tag">📺 B站搜"克拉尼图形"</span></div>
+<div class="takeaway">💡 声音=振动+介质。没有空气，你喊破喉咙也没人听到。</div></div></div></div>
+
+<div class="card" data-c="orange" onclick="this.classList.toggle('flipped');updateProgress()">
+<div class="card-inner">
+<div class="face front"><span class="week-badge">💡 第 2 周</span><div class="big-icon">✨</div><div class="f-title">光现象</div><div class="f-sub">第2章 · 光的传播与反射</div>
+<ul class="f-points"><li>光在均匀介质中<strong>沿直线传播</strong>（影子、日食月食、小孔成像）</li><li>反射定律：<strong>反射角=入射角</strong>；光路可逆</li><li>平面镜成像：<strong>等大·等距·正立·虚像·左右颠倒</strong></li><li>折射：空气斜射入水，折射角<strong>＜</strong>入射角；<strong>垂直入射不偏折</strong></li><li>🌊 光速 c≈3×10⁸ m/s；先见闪电后听雷声</li></ul>
+<div style="font-size:.75rem;color:#666;background:#f0f4ff;padding:4px 8px;border-radius:4px;margin:4px 0;line-height:1.4;">🔍 <strong>趣味事实：</strong>太阳光到达地球需要约8分钟。也就是说，你看到的太阳其实是8分钟前的太阳——我们永远活在"过去"里。</div>
+<div class="teaser">💭 镜子里的你，是上下颠倒还是左右颠倒？水里的筷子为什么"断了"？</div><div class="flip-tip">👆 点击翻面做实验</div></div>
+<div class="face back"><div class="b-label">🧪 动手实验</div><div class="b-title">光的直线传播 + 折射</div>
+<div class="exp-card"><span class="e-tag">实验1</span><span class="e-title">小孔成像——两千年前的发现</span><div class="e-mat">器材：蜡烛、纸板（扎小孔）、白墙</div><div class="e-principle">暗房间，蜡烛一侧，中间纸板扎小孔，对面墙上出现<strong>倒立的烛焰</strong>。墨子两千多年前就发现了。</div><div class="e-q">💡 把小孔变大，像变亮还是变模糊？</div></div>
+<div class="exp-card"><span class="e-tag">实验2</span><span class="e-title">硬币"浮"起来了 + 筷子弯折</span><div class="e-mat">器材：碗、硬币、一杯水、筷子</div><div class="e-principle">碗底放硬币退后到看不见→不动头缓缓加水→硬币出现了（折射）。筷子插入水侧面看"折断"，正上方看不会——<strong>垂直入射不偏折。</strong></div><div class="e-q">💡 渔民叉鱼应该瞄准哪个位置？</div></div>
+<div style="font-size:.68rem;font-weight:700;color:#888;margin:8px 0 4px 0;">🎬 趣味视频</div>
+<div class="res-row"><a href="https://phet.colorado.edu/zh_CN/simulations/bending-light">🎮 PhET光的折射</a><span class="r-tag">📺 B站搜"海市蜃楼"</span></div>
+<div class="takeaway">💡 你看到的世界，是光在你眼睛里"画"出来的。光不骗人，但光会拐弯。</div></div></div></div>
+
+<div class="card" data-c="red" onclick="this.classList.toggle('flipped');updateProgress()">
+<div class="card-inner">
+<div class="face front"><span class="week-badge">🔍 第 3 周</span><div class="big-icon">🔎</div><div class="f-title">透镜及其应用</div><div class="f-sub">第3章 · 从放大镜到眼睛</div>
+<ul class="f-points"><li><strong>凸透镜</strong>会聚光（中间厚），<strong>凹透镜</strong>发散光（中间薄）</li><li>口诀：<strong>一倍焦距分虚实，二倍焦距分大小</strong></li><li>u>2f 照相机 · f&lt;u&lt;2f 投影仪 · u&lt;f 放大镜</li><li>眼睛=自动变焦照相机，晶状体=凸透镜</li><li><strong>近视</strong>→凹透镜矫正；<strong>远视</strong>→凸透镜矫正</li></ul>
+<div style="font-size:.75rem;color:#666;background:#f0f4ff;padding:4px 8px;border-radius:4px;margin:4px 0;line-height:1.4;">🔍 <strong>趣味事实：</strong>人的眼睛相当于一台576万像素的"相机"，而且自动对焦、自动调光圈、自动白平衡——至今没有任何相机能完全模拟。</div>
+<div class="teaser">💭 放大镜能点火——那么小的玻璃片，哪来这么大能量？近视镜和老花镜哪里不同？</div><div class="flip-tip">👆 点击翻面做实验</div></div>
+<div class="face back"><div class="b-label">🧪 动手实验</div><div class="b-title">焦点 + 水滴显微镜</div>
+<div class="exp-card"><span class="e-tag">实验1</span><span class="e-title">放大镜点火 ⚠️注意安全</span><div class="e-mat">器材：放大镜、纸、阳光（旁边备水）</div><div class="e-principle">阳光下放大镜对准纸，调出最小最亮的光斑→焦点。纸冒烟着火——<strong>光能→热能。</strong></div><div class="e-q">💡 阴天还能点着火吗？</div></div>
+<div class="exp-card"><span class="e-tag">实验2</span><span class="e-title">水滴显微镜 + 测焦距</span><div class="e-mat">器材：手机、牙签、放大镜</div><div class="e-principle">手机摄像头滴一滴水→超微距镜头。放大镜对远处窗户，白墙上找倒像→放大镜到墙≈焦距。</div><div class="e-q">💡 放大镜看课本上的字——实像还是虚像？</div></div>
+<div style="font-size:.68rem;font-weight:700;color:#888;margin:8px 0 4px 0;">🎬 趣味视频</div>
+<div class="res-row"><a href="https://phet.colorado.edu/zh_CN/simulations/geometric-optics">🎮 PhET几何光学</a><span class="r-tag">📺 B站搜"近视手术原理"</span></div>
+<div class="takeaway">💡 一块玻璃弯曲的角度决定了你看到的世界是大是小、是远是近。</div></div></div></div>
+
+<div class="card" data-c="green" onclick="this.classList.toggle('flipped');updateProgress()">
+<div class="card-inner">
+<div class="face front"><span class="week-badge">🌡️ 第 4 周</span><div class="big-icon">🧊</div><div class="f-title">物态变化</div><div class="f-sub">第4章 · 冰→水→水蒸气</div>
+<ul class="f-points"><li>六种变化：熔化/凝固·汽化/液化·升华/凝华（吸放热方向）</li><li><strong>晶体</strong>有固定熔点（冰0°C），非晶体没有（蜡、玻璃）</li><li>蒸发（任何温度·液面）vs 沸腾（沸点·内部+表面）</li><li>沸腾时<strong>温度不再升高</strong>→热量用于汽化潜热</li><li>气压↑→沸点↑（高压锅）；气压↓→沸点↓（高原）</li><li>🌊 应用：冰箱、空调、干冰、融雪剂</li></ul>
+<div style="font-size:.75rem;color:#666;background:#f0f4ff;padding:4px 8px;border-radius:4px;margin:4px 0;line-height:1.4;">🔍 <strong>趣味事实：</strong>冰能浮在水面上，是因为水结冰时体积膨胀约9%。如果冰沉入水底，地球上的海洋会从底部开始冻结——生命可能根本不会出现。</div>
+<div class="teaser">💭 冰化成水是0°C，水结成冰也是0°C——同一温度为什么可固可液？</div><div class="flip-tip">👆 点击翻面做实验</div></div>
+<div class="face back"><div class="b-label">🧪 动手实验</div><div class="b-title">厨房就是你的实验室</div>
+<div class="exp-card"><span class="e-tag">实验1</span><span class="e-title">沸腾时温度不再升高</span><div class="e-mat">器材：锅、水、厨房温度计</div><div class="e-principle">烧水，快开时放入温度计。沸腾后继续加热，温度维持100°C<strong>不再上升</strong>——热量用来把水变成水蒸气（<strong>汽化潜热</strong>）。</div><div class="e-q">💡 高原上煮鸡蛋为什么煮不熟？</div></div>
+<div class="exp-card"><span class="e-tag">实验2</span><span class="e-title">冰箱里的物理课</span><div class="e-mat">器材：冰箱、一瓶水</div><div class="e-principle">冷冻室取水→瓶身"出汗"（液化）。放回冷冻→"汗"变霜（凝华）。</div><div class="e-q">💡 霜是水蒸气直接变固态的吗？</div></div>
+<div style="font-size:.68rem;font-weight:700;color:#888;margin:8px 0 4px 0;">🎬 趣味视频</div>
+<div class="res-row"><a href="https://phet.colorado.edu/zh_CN/simulations/states-of-matter-basics">🎮 PhET物质状态</a><span class="r-tag">📺 B站搜"干冰不是冰"</span></div>
+<div class="takeaway">💡 冰、水、水蒸气是同一种东西的三种样子。</div></div></div></div>
+
+<div class="card" data-c="purple" onclick="this.classList.toggle('flipped');updateProgress()">
+<div class="card-inner">
+<div class="face front"><span class="week-badge">⚖️ 第 5 周</span><div class="big-icon">🏋️</div><div class="f-title">质量与密度</div><div class="f-sub">第5章 · 一斤铁和一斤棉花</div>
+<ul class="f-points"><li>质量是<strong>固有属性</strong>（不随形状、状态、位置改变）</li><li>核心公式：<strong>ρ = m / V</strong>（密度=质量÷体积）</li><li>单位：g/cm³ 与 kg/m³；1g/cm³=1000kg/m³</li><li>密度＞液体→下沉；密度＜液体→上浮</li><li>铁块沉底（铁密度＞水）；轮船漂浮（整体平均密度＜水）</li><li>🌊 应用：鉴别物质、选材料（飞机用密度小的铝合金）</li></ul>
+<div style="font-size:.75rem;color:#666;background:#f0f4ff;padding:4px 8px;border-radius:4px;margin:4px 0;line-height:1.4;">🔍 <strong>趣味事实：</strong>地球上密度最大的天然物质是锇（22.59g/cm³），一块拳头大小的锇重达5公斤。而密度最小的是气凝胶，99.8%是空气。</div>
+<div class="teaser">💭 一斤铁和一斤棉花"哪个重"？谁密度大？</div><div class="flip-tip">👆 点击翻面做实验</div></div>
+<div class="face back"><div class="b-label">🧪 动手实验</div><div class="b-title">密度看得见</div>
+<div class="exp-card"><span class="e-tag">实验1</span><span class="e-title">厨房量筒——测鸡蛋密度</span><div class="e-mat">器材：量杯、鸡蛋、厨房秤</div><div class="e-principle">量杯200ml水→放鸡蛋→水位上升=鸡蛋体积。称质量÷体积=密度。</div><div class="e-q">💡 新鲜鸡蛋沉底还是浮起？</div></div>
+<div class="exp-card"><span class="e-tag">实验2</span><span class="e-title">分层鸡尾酒 + 橡皮泥船</span><div class="e-mat">器材：透明杯、蜂蜜、水、油、橡皮泥</div><div class="e-principle">蜂蜜→水→油依次倒入不混合（密度分层）。橡皮泥捏球沉、捏船浮——整体密度<水。这就是万吨巨轮的原理。</div><div class="e-q">💡 墨水会在哪一层停住？</div></div>
+<div style="font-size:.68rem;font-weight:700;color:#888;margin:8px 0 4px 0;">🎬 趣味视频</div>
+<div class="res-row"><a href="https://phet.colorado.edu/zh_CN/simulations/density">🎮 PhET密度模拟</a><span class="r-tag">📺 B站搜"阿基米德王冠"</span></div>
+<div class="takeaway">💡 密度决定沉浮。同样重的东西，占的空间越大就越容易浮。</div></div></div></div>
+
+<div class="card" data-c="gold" onclick="this.classList.toggle('flipped');updateProgress()">
+<div class="card-inner">
+<div class="face front"><span class="week-badge">🏆 第 6 周</span><div class="big-icon">🌟</div><div class="f-title">综合复盘</div><div class="f-sub">回顾 + 自选项目</div>
+<ul class="f-points"><li>声：振动→介质传播→三要素→回声≥17m</li><li>光：直线→反射定律→平面镜→折射（水变"浅"）</li><li>透镜：凸会聚/凹发散→口诀"一倍虚二倍小"→眼睛矫正</li><li>物态：六条变化线→晶体熔点→沸点恒温（气压影响）</li><li>密度：ρ=m/V→浮沉条件→轮船/热气球原理</li><li>🌊 核心技能：用实验验证猜想，用公式解释现象</li></ul>
+<div style="font-size:.75rem;color:#666;background:#f0f4ff;padding:4px 8px;border-radius:4px;margin:4px 0;line-height:1.4;">🔍 <strong>趣味事实：</strong>伽利略在比萨斜塔上同时扔下两个不同重量的铁球——它们同时落地。这个实验推翻了亚里士多德"重物先落地"的错误认知，开启了现代物理学。</div>
+<div class="teaser">💭 开学后物理老师第一个问题，你能自信举手吗？</div><div class="flip-tip">👆 翻面选项目完成</div></div>
+<div class="face back"><div class="b-label">🛠️ 三选一项目</div><div class="b-title">用学到的东西做点什么</div>
+<div class="exp-card"><span class="e-tag">A</span><span class="e-title">科学展板</span><div class="e-principle">选一个物理现象，A3纸画原理图+记录+解释。</div></div>
+<div class="exp-card"><span class="e-tag">B</span><span class="e-title">拍摄实验视频</span><div class="e-principle">选最成功的实验，拍3分钟讲解视频。</div></div>
+<div class="exp-card"><span class="e-tag">C</span><span class="e-title">50个生活物理现象</span><div class="e-principle">从早上一睁眼开始记录，每天10个，一周完成。</div></div>
+<div style="font-size:.68rem;font-weight:700;color:#888;margin:8px 0 4px 0;">🎬 趣味视频</div>
+<div class="res-row"><a href="https://basic.smartedu.cn/">🎓 智慧教育平台</a><span class="r-tag">📺 Veritasium</span><span class="r-tag">📺 李永乐老师</span></div>
+<div class="takeaway">💡 物理不是一门课，是你解释世界的语言。</div></div></div></div>
+
+<div class="card" data-c="blue" onclick="this.classList.toggle('flipped');updateProgress()">
+<div class="card-inner">
+<div class="face front"><span class="week-badge">📚 工具箱</span><div class="big-icon">🧰</div><div class="f-title">拓展资源 + 安全贴士</div><div class="f-sub">趁手工具 · 安全第一</div>
+<ul class="f-points"><li>国内平台：国家智慧教育、上海智慧教育、PhET中文</li><li>国际平台：可汗学院、NOVA、Physics Classroom、Veritasium</li><li>每日节奏：读教材→做实验→看视频→玩模拟→记笔记</li></ul>
+<div class="exp-card" style="margin-top:8px;"><span class="e-tag" style="background:#fdebeb;color:#c62828;">⚠️</span><strong style="color:#c62828;">安全提醒（家长必读）</strong><div class="e-principle" style="background:#fff5f5;color:#5a2a2a;">🔴 <strong>蜡烛/酒精灯：</strong>务必家长陪同，旁边备水，远离窗帘纸张<br>🔴 <strong>干冰：</strong>戴手套取用，通风环境操作，禁止直接接触皮肤<br>🔴 <strong>激光笔：</strong>绝对不对眼睛照射，不直视反射光，不用高功率激光<br>🔴 <strong>网购材料：</strong>选正规渠道，化学试剂类需家长确认安全性<br>🔴 <strong>电路实验：</strong>不用家用插座，只用电池（1.5V-9V），做完断开</div></div>
+<div class="flip-tip">👆 翻面看完整资源</div></div>
+<div class="face back"><div class="b-label">🌐 完整资源</div><div class="b-title">国内·国际·平台·创作者</div>
+<div class="exp-card"><span class="e-tag">官</span><span class="e-title">国家中小学智慧教育平台</span><div class="e-mat">basic.smartedu.cn</div><div class="e-principle">官方课程视频、课件、实验资源。八上物理全套免费看。</div></div>
+<div class="exp-card"><span class="e-tag">🎮</span><span class="e-title">PhET中文版 + 上海智慧教育</span><div class="e-mat">phet.colorado.edu/zh_CN | sh.smartedu.cn</div><div class="e-principle">125+免费互动模拟—声波、折射、透镜、物态、密度，拖拽即玩。上海本地化资源紧贴沪版教材。</div></div>
+<div class="exp-card"><span class="e-tag">🌍</span><span class="e-title">国际资源</span><div class="e-mat">khanacademy.org | pbs.org/nova | physicsclassroom.com</div><div class="e-principle">可汗学院（可选中文字幕）、NOVA（PBS科学纪录片）、Physics Classroom（图文教程+在线练习）。</div></div>
+<div class="exp-card"><span class="e-tag">📺</span><span class="e-title">视频创作者</span><div class="e-mat">B站 / YouTube 搜索</div><div class="e-principle">Veritasium（极端实验揭示物理本质）· 李永乐老师（最清晰的物理科普）· 毕导THU（日常现象拆硬核物理）。</div></div>
+</div></div></div>
+
+</div><!-- /grid -->
+
+<div class="footer">
+<p>© 山上有嘉木的AI研究室 · 沪科版五四制个人学习使用，禁止二次分发</p>
+<p style="margin-top:6px;">💡 点击任意卡片翻面 · 进度条自动记录 · 点击「打印」可导出PDF</p>
+</div>
+
+<script>
+function updateProgress(){
+var total=8,flipped=document.querySelectorAll('.card.flipped').length;
+document.getElementById('progress').textContent='已翻阅 '+flipped+' / '+total+' 张';
+}
+// 点击链接时不触发卡片翻转
+document.addEventListener('click',function(e){
+if(e.target.closest('a')) e.stopPropagation();
+});
+</script>
+</body>
+</html>
