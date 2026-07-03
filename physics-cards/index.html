@@ -81,25 +81,7 @@ body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background
 .footer a{color:#5a7a9a;text-decoration:underline}
 
 @media(max-width:680px){.card{height:520px}.grid{grid-template-columns:1fr;max-width:400px}}
-@media print{
-  body{background:#fff;padding:0}
-  .cover{background:#1a2a4a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:20px}
-  .cover h1{font-size:1.5rem}
-  .guide,.actions{display:none}
-  .grid{display:block;max-width:680px;margin:0 auto}
-  .card{height:auto;page-break-after:always;margin:0 0 12px;cursor:default;perspective:none;box-shadow:none}
-  .card:last-child{page-break-after:auto}
-  .card-inner{transform:none!important;box-shadow:none;border:1px solid #ddd}
-  .face{position:relative;backface-visibility:visible;border-radius:0;padding:16px;overflow:visible}
-  .face::before{height:4px;border-radius:0}
-  .back{display:block;transform:none;border-top:2px dashed #ccc;margin-top:12px;padding-top:12px}
-  .flip-tip{display:none}
-  .teaser{display:none}
-  .big-icon{font-size:2rem}
-  .f-title{font-size:1.2rem}
-  .exp-card{break-inside:avoid}
-  .footer{font-size:.7rem;padding:10px}
-}}
+}
 </style>
 </head>
 <body>
@@ -129,7 +111,7 @@ body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background
 
 <!-- ===== 操作按钮 ===== -->
 <div class="actions">
-<button class="btn btn-print" onclick="window.print()" title="打印或导出为PDF">🖨️ 打印 / 导出PDF</button>
+
 <button class="btn btn-reset" onclick="document.querySelectorAll('.card.flipped').forEach(c=>c.classList.remove('flipped'));updateProgress()">🔄 全部翻回正面</button>
 <span class="btn-progress" id="progress">已翻阅 0 / 8 张</span>
 </div>
@@ -258,7 +240,7 @@ body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background
 
 <div class="footer">
 <p>© 山上有嘉木的AI研究室 · 沪科版五四制个人学习使用，禁止二次分发</p>
-<p style="margin-top:6px;">💡 点击任意卡片翻面 · 进度条自动记录 · 点击「打印」可导出PDF</p>
+<p style="margin-top:6px;">💡 点击任意卡片翻面 · 进度条自动记录</p>
 </div>
 
 <script>
