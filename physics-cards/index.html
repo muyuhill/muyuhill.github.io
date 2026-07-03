@@ -32,7 +32,7 @@ body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background
 
 /* ===== 卡片网格 ===== */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:780px;width:100%;padding:0 16px}
-.card{perspective:1200px;height:560px;user-select:none;cursor:pointer}
+.card{perspective:1200px;height:600px;user-select:none;cursor:pointer}
 .card-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.23,1,.32,1);transform-style:preserve-3d;border-radius:20px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .card.flipped .card-inner{transform:rotateY(180deg)}
 .face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;padding:20px 18px 16px;display:flex;flex-direction:column;overflow:hidden;background:#fff}
@@ -80,7 +80,7 @@ body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background
 .footer{text-align:center;color:#8a9aaa;font-size:.78rem;padding:28px 16px 20px;max-width:800px;width:100%}
 .footer a{color:#5a7a9a;text-decoration:underline}
 
-@media(max-width:680px){.card{height:520px}.grid{grid-template-columns:1fr;max-width:400px}}
+@media(max-width:680px){.card{height:560px}.grid{grid-template-columns:1fr;max-width:400px}}
 }
 </style>
 </head>
@@ -223,7 +223,7 @@ body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background
 <div class="res-row"><a href="https://basic.smartedu.cn/" target="_blank">🎓 智慧教育平台</a><span class="r-tag">📺 Veritasium</span><span class="r-tag">📺 李永乐老师</span></div>
 <div class="takeaway">💡 物理不是一门课，是你解释世界的语言。</div></div></div></div>
 
-<div class="card" data-c="blue" style="height:600px" onclick="this.classList.toggle('flipped');updateProgress()">
+<div class="card" data-c="blue" onclick="this.classList.toggle('flipped');updateProgress()">
 <div class="card-inner">
 <div class="face front"><span class="week-badge">📚 工具箱</span><div class="big-icon">🧰</div><div class="f-title">拓展资源 + 安全贴士</div><div class="f-sub">趁手工具 · 安全第一</div>
 <ul class="f-points"><li>国内平台：国家智慧教育、上海智慧教育、PhET中文</li><li>国际平台：可汗学院、NOVA、Physics Classroom、Veritasium</li><li>每日节奏：读教材→做实验→看视频→玩模拟→记笔记</li></ul>
